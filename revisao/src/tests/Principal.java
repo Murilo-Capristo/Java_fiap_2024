@@ -1,5 +1,6 @@
 package tests;
 
+import models.ClassificacaoEnum;
 import models.Filme;
 import models.Serie;
 import models.Titulo;
@@ -20,6 +21,7 @@ public class Principal {
         minhaSerie.setTemporada(18);
         minhaSerie.setEpisodiosPorTemporada(20);
         minhaSerie.setMinutosPorEpisodio(50);
+        minhaSerie.setClassificacaoIndicativa(ClassificacaoEnum.DEZESSEIS);
         minhaSerie.exibirFichaTecnica();
 
         Filme filme = new Filme();

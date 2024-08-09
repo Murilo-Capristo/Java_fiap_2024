@@ -6,6 +6,9 @@ public abstract class Titulo {
     private int anoDeLancamento;
     protected int duracaoEmMinutos;
     protected double somaAvaliacao;
+    protected int totalAvaliacoes;
+    private ClassificacaoEnum classificacaoIndicativa;
+
     public void exibirFichaTecnica(){
         System.out.println("Nome: " + nome);
         System.out.println("Ano de lançamento: " + anoDeLancamento);
@@ -40,5 +43,29 @@ public abstract class Titulo {
 
     public void setDuracaoEmMinutos(int duracaoEmMinutos) {
         this.duracaoEmMinutos = duracaoEmMinutos;
+    }
+
+    public double getSomaAvaliacao() {
+        return somaAvaliacao;
+    }
+
+    public void setSomaAvaliacao(double somaAvaliacao) {
+        this.somaAvaliacao = somaAvaliacao;
+    }
+
+    public int getTotalAvaliacoes() {
+        return totalAvaliacoes;
+    }
+
+    public void setTotalAvaliacoes(int totalAvaliacoes) {
+        this.totalAvaliacoes = totalAvaliacoes;
+    }
+
+    public ClassificacaoEnum getClassificacaoIndicativa() {
+        return classificacaoIndicativa;
+    }
+
+    public void setClassificacaoIndicativa(ClassificacaoEnum classificacaoIndicativa) {
+        this.classificacaoIndicativa = classificacaoIndicativa;
     }
 }

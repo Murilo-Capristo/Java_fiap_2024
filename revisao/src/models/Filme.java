@@ -16,8 +16,9 @@ public class Filme extends Titulo implements Classificavel{
         somaAvaliacao += nota;
     }
 
+
     @Override
     public int getClassificacao() {
-        return 0;
+        return (int) somaAvaliacao / totalAvaliacoes;
     }
 }
