@@ -5,6 +5,9 @@ import models.Filme;
 import models.Serie;
 import models.Titulo;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
         Serie titulo = new Serie();
@@ -26,6 +29,30 @@ public class Principal {
 
         Filme filme = new Filme();
         filme.setNome("Sem memória");
+
+        ArrayList<Titulo> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filme);
+        listaDeFilmes.add(minhaSerie);
+        listaDeFilmes.add(titulo);
+
+        System.out.println("Exibindo a lista usando foreach");
+        for(Titulo t : listaDeFilmes){
+            System.out.println("Titulo: " + t.getNome());
+            System.out.println("Ano de lançamento: " + t.getAnoDeLancamento() + "\n");
+        }
+
+        System.out.println("Exibindo a lista usando o método forEach");
+        listaDeFilmes.forEach(f -> System.out.println(f.getNome()));
+
+        listaDeFilmes.forEach(f -> {
+            System.out.println(f.getNome());
+            System.out.println("Ano de lançamento: " + f.getAnoDeLancamento() + "\n");
+        });
+
+
+
+
+
 
     }
 }
