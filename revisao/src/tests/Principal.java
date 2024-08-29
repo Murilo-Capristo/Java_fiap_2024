@@ -5,7 +5,6 @@ import models.Filme;
 import models.Serie;
 import models.Titulo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Principal {
@@ -21,7 +20,7 @@ public class Principal {
         minhaSerie.setAnoDeLancamento(2000);
         minhaSerie.setDuracaoEmMinutos(500000);
         minhaSerie.setAtiva(false);
-        minhaSerie.setTemporada(18);
+        minhaSerie.setNumeroTemporada(18);
         minhaSerie.setEpisodiosPorTemporada(20);
         minhaSerie.setMinutosPorEpisodio(50);
         minhaSerie.setClassificacaoIndicativa(ClassificacaoEnum.DEZESSEIS);

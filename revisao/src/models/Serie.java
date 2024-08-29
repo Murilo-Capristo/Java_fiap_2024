@@ -1,17 +1,47 @@
 package models;
 
+import java.util.List;
+
 public class Serie extends Titulo{
 
-    private int temporada;
+    private int numeroTemporada;
     private boolean ativa;
     private int episodiosPorTemporada;
     private int minutosPorEpisodio;
+
+    private List<Temporada> temporadas;
+
+    public Serie(int numeroTemporada, boolean ativa, int episodiosPorTemporada, int minutosPorEpisodio, List<Temporada> temporadas) {
+        this.numeroTemporada = numeroTemporada;
+        this.ativa = ativa;
+        this.episodiosPorTemporada = episodiosPorTemporada;
+        this.minutosPorEpisodio = minutosPorEpisodio;
+        this.temporadas = temporadas;
+    }
+
+    public Serie() {
+    }
+
+    public Serie(String lucifer, int i, boolean b, double v, int i1, int i2, boolean b1, int i3, int i4, List<Temporada> temporadas, int i5) {
+        super();
+    }
+
+    @Override
+    public String toString() {
+        return "Serie{" +
+                "numeroTemporada=" + numeroTemporada +
+                ", ativa=" + ativa +
+                ", episodiosPorTemporada=" + episodiosPorTemporada +
+                ", minutosPorEpisodio=" + minutosPorEpisodio +
+                ", temporadas=" + temporadas +
+                '}';
+    }
 
     @Override
     public void exibirFichaTecnica(){
         super.exibirFichaTecnica();
         System.out.println(duracaoEmMinutos);
-        System.out.println("Número de temporadas: " + temporada);
+        System.out.println("Número de temporadas: " + numeroTemporada);
         System.out.println("Quantidade de episódios por temporada: " + episodiosPorTemporada);
         System.out.println("Tempo por episódio em minutos: " + minutosPorEpisodio);
         if(ativa)
@@ -25,12 +55,12 @@ public class Serie extends Titulo{
 
     }
 
-    public int getTemporada() {
-        return temporada;
+    public int getNumeroTemporada() {
+        return numeroTemporada;
     }
 
-    public void setTemporada(int temporada) {
-        this.temporada = temporada;
+    public void setNumeroTemporada(int numeroTemporada) {
+        this.numeroTemporada = numeroTemporada;
     }
 
     public boolean isAtiva() {
