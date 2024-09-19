@@ -13,7 +13,7 @@ public class EnderecoDao {
     private Connection conexao;
 
     public EnderecoDao() {
-        this.conexao = ConnectionFactory.obterConexao();
+        this.conexao = ConnectionFactory.getConnection();
     }
     /*insert into tbl_endereco(idEndereco, cep, rua, complemento, bairro, cidade, uf, numero)
      values(1,"01310914","AV. PAULISTA", "4 ANDAR","BELA VISTA","SÃO PAULO", "SP", "1001")*/

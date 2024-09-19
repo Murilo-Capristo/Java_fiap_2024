@@ -11,6 +11,32 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ViaCepService {
+
+    /**
+     * API Via Cep - https://viacep.com.br/
+     * Webservice gratuito de alto desempenho para consulta de Código de Endereçamento Postal (CEP) do Brasil.
+     * Exemplo de consulta de CEP:
+     *     viacep.com.br/ws/01001000/json/
+     * Saída
+     * URL: viacep.com.br/ws/01001000/json/
+     *
+     *     {
+     *       "cep": "01001-000",
+     *       "logradouro": "Praça da Sé",
+     *       "complemento": "lado ímpar",
+     *       "unidade": "",
+     *       "bairro": "Sé",
+     *       "localidade": "São Paulo",
+     *       "uf": "SP",
+     *       "estado": "São Paulo",
+     *       "regiao": "Sudeste",
+     *       "ibge": "3550308",
+     *       "gia": "1004",
+     *       "ddd": "11",
+     *       "siafi": "7107"
+     *     }
+     *
+     * */
     public Endereco buscarEndereco(String cep){
         try{
             String endereco = "https://viacep.com.br/ws/" + cep+ "/json/";
