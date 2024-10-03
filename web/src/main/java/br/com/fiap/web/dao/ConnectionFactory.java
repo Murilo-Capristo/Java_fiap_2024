@@ -33,9 +33,12 @@ public class ConnectionFactory {
         }
     }
 
-    public static Connection obterConexao(){
+    public static Connection obterConexao() throws IOException {
         Connection conexao = null;
         Properties properties = new Properties();
+
+        FileInputStream fileConfig = new FileInputStream("C:\\Users\\Master\\Desktop\\Java_fiap_2024\\web\\src\\main\\config.properties");
+        properties.load(fileConfig);
         String url = properties.getProperty("URL");
         String user = properties.getProperty("USERNAME");
         String password = properties.getProperty("PASSWORD");

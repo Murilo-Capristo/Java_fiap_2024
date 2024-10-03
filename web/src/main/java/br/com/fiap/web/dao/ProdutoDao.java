@@ -2,6 +2,7 @@ package br.com.fiap.web.dao;
 
 import br.com.fiap.web.model.Produto;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ import java.util.List;
 public class ProdutoDao {
     private Connection conexao;
 
-    public ProdutoDao() {
+    public ProdutoDao() throws IOException {
         this.conexao = ConnectionFactory.obterConexao();
     }
     public void inserir(Produto produto){
