@@ -58,6 +58,24 @@ public class ProdutoDao {
         }
         return produto;
     }
+    //Atualizar => Update tbl_produto set codigo = ?, nome = ?, preco = ?, quantidade = ? where codigo = ?
+    public void atualizar(Produto produto){
+        PreparedStatement comandoSql = null;
+        try{
+            String sql = "Update tbl_produto set nome = ?, preco = ?, quantidade = ? where codigo = ?";
+            comandoSql = conexao.prepareStatement(sql);
+            comandoSql.setInt(4, produto.getCodigo());
+            comandoSql.setString(1, produto.getNome());
+            comandoSql.setDouble(2, produto.getPreco());
+            comandoSql.setInt(3, produto.getQuantidade());
+            comandoSql.executeUpdate();
+            comandoSql.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     //Listar => SELECT * FROM TBL_ENDERECO
     public List<Produto> listar(){

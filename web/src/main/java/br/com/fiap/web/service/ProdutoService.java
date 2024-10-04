@@ -25,4 +25,7 @@ public class ProdutoService {
     public Produto cadastrar(Produto produto){
         return produtodao.inserir(produto);
     }
+    public void atualizar(Produto produto){
+        produtodao.atualizar(produto);
+    }
 }
