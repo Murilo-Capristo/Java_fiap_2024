@@ -21,4 +21,8 @@ public class ProdutoService {
     public Produto buscarPorId(int codigo) {
         return produtodao.buscarPorId(codigo);
     }
+
+    public Produto cadastrar(Produto produto){
+        return produtodao.inserir(produto);
+    }
 }

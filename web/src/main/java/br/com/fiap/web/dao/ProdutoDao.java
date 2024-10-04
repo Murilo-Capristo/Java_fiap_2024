@@ -16,7 +16,7 @@ public class ProdutoDao {
     public ProdutoDao() throws IOException {
         this.conexao = ConnectionFactory.obterConexao();
     }
-    public void inserir(Produto produto){
+    public Produto inserir(Produto produto){
         PreparedStatement comandoSql = null;
         try{
             String sql = "insert into tbl_produto(codigo, nome, preco, quantidade)" +
@@ -33,6 +33,7 @@ public class ProdutoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return produto;
     }
 
     //Buscar por id => SELECT * FROM TBL_ENDERECO WHERE IDENDERECO = ?
