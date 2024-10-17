@@ -1,4 +1,4 @@
-package br.com.fiap.web.senhas;
+/*package br.com.fiap.web.senhas;
 
 public class TesteBCrypt {
     public static void main(String[] args) {
