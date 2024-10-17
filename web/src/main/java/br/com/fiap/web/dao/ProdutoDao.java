@@ -11,12 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoDao {
+
     private Connection conexao;
 
-    public ProdutoDao() throws IOException {
-        this.conexao = ConnectionFactory.obterConexao();
+    public ProdutoDao() {
+        try {
+            this.conexao = ConnectionFactory.obterConexao();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-    public Produto inserir(Produto produto){
+    public void inserir(Produto produto){
         PreparedStatement comandoSql = null;
         try{
             String sql = "insert into tbl_produto(codigo, nome, preco, quantidade)" +
@@ -33,10 +38,45 @@ public class ProdutoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return produto;
     }
 
-    //Buscar por id => SELECT * FROM TBL_ENDERECO WHERE IDENDERECO = ?
+    public void alterar(Produto produto){
+        PreparedStatement comandoSql = null;
+        try{
+            String sql = "update tbl_produto set nome = ?, preco=?, quantidade=?" +
+                    " where codigo=?";
+            comandoSql = conexao.prepareStatement(sql);
+            comandoSql.setString(1, produto.getNome());
+            comandoSql.setDouble(2, produto.getPreco());
+            comandoSql.setInt(3, produto.getQuantidade());
+            comandoSql.setInt(4, produto.getCodigo());
+
+            comandoSql.executeUpdate();
+//            //int id = comandoSql.executeUpdate();
+//            //var newProduto = buscarPorId(id);
+            //conexao.close();
+            comandoSql.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void excluir(int id){
+        PreparedStatement comandoSql = null;
+        try{
+            String sql = "delete from tbl_produto where codigo = ?";
+            comandoSql = conexao.prepareStatement(sql);
+            comandoSql.setInt(1, id);
+
+            comandoSql.executeUpdate();
+            //conexao.close();
+            comandoSql.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //Buscar por id => SELECT * FROM TBL_PRODUTO WHERE ID_PRODUTO = ?
     public Produto buscarPorId(int id){
         Produto produto = new Produto();
         PreparedStatement comandoSql = null;
@@ -58,24 +98,6 @@ public class ProdutoDao {
         }
         return produto;
     }
-    //Atualizar => Update tbl_produto set codigo = ?, nome = ?, preco = ?, quantidade = ? where codigo = ?
-    public void atualizar(Produto produto){
-        PreparedStatement comandoSql = null;
-        try{
-            String sql = "Update tbl_produto set nome = ?, preco = ?, quantidade = ? where codigo = ?";
-            comandoSql = conexao.prepareStatement(sql);
-            comandoSql.setInt(4, produto.getCodigo());
-            comandoSql.setString(1, produto.getNome());
-            comandoSql.setDouble(2, produto.getPreco());
-            comandoSql.setInt(3, produto.getQuantidade());
-            comandoSql.executeUpdate();
-            comandoSql.close();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
     //Listar => SELECT * FROM TBL_ENDERECO
     public List<Produto> listar(){
@@ -99,4 +121,6 @@ public class ProdutoDao {
         }
         return produtos;
     }
+
+
 }
